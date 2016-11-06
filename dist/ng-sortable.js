@@ -833,7 +833,7 @@
                      */
                     function insertBefore(targetElement, targetScope) {
                         // Ensure the placeholder is visible in the target (unless it's a table row)
-                        if (placeHolder.css('display') !== 'table-row' && placeHolder.css('display') !== 'inline-block') {
+                        if (placeHolder.css('display') === 'block') {
                             placeHolder.css('display', 'block');
                         }
                         if (!targetScope.sortableScope.options.clone) {
@@ -850,7 +850,7 @@
                      */
                     function insertAfter(targetElement, targetScope) {
                         // Ensure the placeholder is visible in the target (unless it's a table row)
-                        if (placeHolder.css('display') !== 'table-row' && placeHolder.css('display') !== 'inline-block') {
+                        if (placeHolder.css('display') === 'block') {
                             placeHolder.css('display', 'block');
                         }
                         if (!targetScope.sortableScope.options.clone) {
