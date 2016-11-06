@@ -90,8 +90,8 @@
                     return {
                         width: boundingClientRect.width || element.prop('offsetWidth'),
                         height: boundingClientRect.height || element.prop('offsetHeight'),
-                        top: boundingClientRect.top + (jQuery('md-toolbar').height() - (jQuery('.page-content').position().top || scrollableContainer.scrollTop - scrollableContainer.offsetTop)),
-                        left: boundingClientRect.left + (jQuery('md-sidenav').width() - (jQuery('.page-content').position().left || scrollableContainer.scrollLeft - scrollableContainer.offsetLeft))
+                        top: boundingClientRect.top + ($window.pageYOffset || scrollableContainer.scrollTop - scrollableContainer.offsetTop),
+                        left: boundingClientRect.left + ($window.pageXOffset || scrollableContainer.scrollLeft - scrollableContainer.offsetLeft)
                     };
                 },
 
@@ -785,7 +785,6 @@
                         } else {
                             // add hidden placeholder element in original position.
                             scope.itemScope.element.after(placeElement);
-
                             // not cloning, so use the original element.
                             dragElement.append(scope.itemScope.element);
                         }
@@ -891,7 +890,7 @@
                             }
 
                             targetX = eventObj.pageX - $document[0].documentElement.scrollLeft;
-                            targetY = eventObj.pageY - (jQuery('.page-content').offset().top || $document[0].documentElement.scrollTop);
+                            targetY = eventObj.pageY - ($window.pageYOffset || $document[0].documentElement.scrollTop);
 
                             //IE fixes: hide show element, call element from point twice to return pick correct element.
                             dragElement.addClass(sortableConfig.hiddenClass);
